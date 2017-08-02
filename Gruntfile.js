@@ -55,7 +55,11 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
-    
+      target: {
+        files: {
+          'public/dist/style.css': ['public/style.css']
+        }
+      }
     },
 
     watch: {
@@ -66,7 +70,7 @@ module.exports = function(grunt) {
         ],
         tasks: [
           'concat',
-          'uglify'
+          'uglify',
         ]
       },
       css: {
@@ -107,7 +111,8 @@ module.exports = function(grunt) {
     'eslint',
     'test',
     'concat',
-    'uglify'
+    'uglify',
+    'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
