@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       options: {
-        separator: ';'
+        separator: ';\n'
       },
 
       dist: {
@@ -111,9 +111,9 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('upload', function(n) {
+    console.log(grunt.option('prod'));
     if (grunt.option('prod')) {
       grunt.task.run(['shell:prodServer']);
-      // git push live master
       // add your production server task here
     } else {
       grunt.task.run([ 'server-dev' ]);
