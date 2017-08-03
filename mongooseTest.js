@@ -6,6 +6,15 @@ console.log(user);
 
 user.save(function(err, product) {
   console.log(user);
+  user.comparePassword('nottest')
+  .then((isMatch) => {
+    console.log('compare password false: ', isMatch);
+    user.comparePassword('test')
+    .then((isMatch) => {
+      console.log('compare password true: ', isMatch);
+    });
+  });
 });
 
 /*setTimeout(()=>console.log(user), 1000);*/
+
