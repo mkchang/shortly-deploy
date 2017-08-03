@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
-var schemas = require('./app/config.js');
-var Link = mongoose.model('Link', schemas.links);
-var link = new Link({url: 'https://www.google.com'});
-console.log(link);
-link.save(function(err, doc){
-  console.log(err);
-  console.log(doc);
+mongoose.connect('mongodb://localhost/shortly');
+var User = require('./app/models/user.js');
+var user = new User({username: 'neal', password: 'test'});
+console.log(user);
+
+user.save(function(err, product) {
+  console.log(user);
 });
+
+/*setTimeout(()=>console.log(user), 1000);*/
