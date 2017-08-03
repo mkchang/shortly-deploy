@@ -13,9 +13,13 @@ var links = new mongoose.Schema({
 });
 
 links.pre('save', function(next) {
+ 
   var shasum = crypto.createHash('sha1');
   shasum.update(this.url);
-  this.code ? this.code : shasum.digest('hex').slice(0, 5);
+  this.code = this.code ? 
+    this.code : 
+    shasum.digest('hex').slice(0, 5);
+  console.log('PRE SAVE HOOK: this.code updated', this);
   next();
 });
 
